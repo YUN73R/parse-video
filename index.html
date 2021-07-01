@@ -2,11 +2,12 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<script src="https://unpkg.com/vue@next"></script>
 		<meta name="wap-font-scale" content="no">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-		<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+<!--		<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">-->
 		<link rel="stylesheet" type="text/css" href="./style/index.css"/>
 		<title>全网VIP视频解析，视频去广告在线观看</title>
 		<link rel="stylesheet" href="style/index.css">
@@ -17,16 +18,19 @@
 				<div class="title">全网VIP视频解析，视频去广告在线观看</div>
 				<div class="input">
 					<input type="text" id="parseUrl" maxlength="-1" placeholder="输入视频链接" />
-					<div class="save">确定</div>
+					<div class="save" id="save">确定</div>
 				</div>
 			</section>
 		</div>
-		<div id="video_wrap">
+		<div class="video_wrap">
 			<section class="video_section">
+				<div class="parse_way">切换线路</div>
 				<div class="parse_list" id="list"></div>
-				<div class="video_player"></div>
+				<div class="video_player" id="videoPlayer"></div>
+				<div class="close_palyer">✖</div>
 			</section>
 		</div>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script src="./script/parse.js"></script>
 	</body>
 </html>

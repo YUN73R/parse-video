@@ -1,4 +1,5 @@
 !(function(w){
+
 	let parseUrl = 'https://v.youku.com/v_show/id_XNTE2NjYyMzAzNg==.html?spm=a2hbt.13141534.1_3.10&s=dbadba5a2e9a4a0394d2'
 	var play_line_json =  [
 		{"name":"纯净1","url":"https://z1.m1907.cn/?jx=","t":"m"},
@@ -56,21 +57,41 @@
 		{"name":"200","url":"https://vip.66parse.club/?url="},
 		{"name":"8090","url":"https://www.8090g.cn/?url="}
 	];
-	document.getElementById('parseUrl').addEventListener('input', e => {
+	let list = ''
+	for(let i in play_line_json) {
+		list += `<div class="item" id="parseItem" data-url="${play_line_json[i].url}">${play_line_json[i].name}</div>`
+	}
+
+	let url = play_line_json[Math.floor(Math.random() * play_line_json.length)].url
+
+	$('#parseUrl').on('input', e => {
 		parseUrl = e.target.value
 	})
-	document.getElementById('parseUrl').addEventListener('keydown', event => {
+	$('#parseUrl').on('keydown', event => {
 		if(event.keyCode == "13") {
-		   let url = play_line_json[Math.floor(Math.random() * play_line_json.length)]
-		   startParse(url.url + parseUrl)
+			$('#save').click()
 		}
-	}); 
+	});
+	$('#save').on('click', e => {
+		console.log(e)
+		$('.video_wrap').fadeIn()
+		startParse(url + parseUrl)
+	})
+
+	$('#list').html(list)
+
+	$('.parse_way').on('click', function () {
+		$('#list').toggleClass('open')
+	})
+	$('#list').on('click', '#parseItem', function () {
+		startParse($(this).data('url') + parseUrl)
+		$(this).parent().removeClass('open')
+	})
+
 	function startParse (url) {
-		console.log(url);
-		document.getElementById('video_box').innerHTML =
+		$('#videoPlayer').html(
 		`
-			<iframe width="860"
-			 height="650"
+			<iframe
 			 src="${url}"
 			 class="t-iframe"
 			 scrolling="no"
@@ -83,5 +104,6 @@
 			 sandbox="allow-forms allow-popups allow-scripts allow-same-origin">
 			</iframe>
 		`
+		)
 	}
 })(window)
