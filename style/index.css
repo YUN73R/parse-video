@@ -26,12 +26,23 @@
     align-items: center;
     justify-content: center;
 }
+.github {
+	position: fixed;
+	top: 0;
+	right: 0;
+}
+.github svg {
+	color: #fff;
+	fill: var(--btn-color);
+	height: 80px;
+	width: 80px;
+}
 .search_section {
     width: 100%;
     margin-top: -150px;
 }
 .title {
-    font-size: 4vmin;
+    font-size: 2vmax;
     text-align: center;
     font-weight: 600;
     color: var(--btn-color);

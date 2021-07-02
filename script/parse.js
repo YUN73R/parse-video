@@ -1,5 +1,4 @@
 !(function($, w){
-
 	let parseUrl = 'https://v.youku.com/v_show/id_XNTE2NjYyMzAzNg==.html?spm=a2hbt.13141534.1_3.10&s=dbadba5a2e9a4a0394d2';
 	const play_line_json =  [
 		{"name":"纯净1","url":"https://z1.m1907.cn/?jx=","t":"m"},
