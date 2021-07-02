@@ -13,6 +13,25 @@
 	--btn-color: #aa00cc;
 	--url-item: #a70040;
 }
+.toast {
+	position: fixed;
+	top: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 999;
+}
+.toast > div {
+	background: rgba(0,0,0,.6);
+	border-radius: 5px;
+	padding: 20px;
+	font-size: 15px;
+	color: #FFFFFF;
+	text-align: center;
+}
 .wrap {
     position: absolute;
     top: 0;

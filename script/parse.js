@@ -1,5 +1,4 @@
 !(function($, w){
-	let parseUrl = 'https://v.youku.com/v_show/id_XNTE2NjYyMzAzNg==.html?spm=a2hbt.13141534.1_3.10&s=dbadba5a2e9a4a0394d2';
 	const play_line_json =  [
 		{"name":"纯净1","url":"https://z1.m1907.cn/?jx=","t":"m"},
 		{"name":"B站1","url":"https://vip.parwix.com:4433/player/?url=","t":"m"},
@@ -56,6 +55,8 @@
 		{"name":"200","url":"https://vip.66parse.club/?url="},
 		{"name":"8090","url":"https://www.8090g.cn/?url="}
 	];
+	let parseUrl;
+
 	let list = '';
 	for(let i in play_line_json) {
 		list += `<div class="item" id="parseItem" data-url="${play_line_json[i].url}">${play_line_json[i].name}</div>`
@@ -75,6 +76,10 @@
 		}
 	});
 	$('#save').on('click', e => {
+		if(!parseUrl) {
+			toast('视频链接不能为空！（◐ˍ◑）')
+			return
+		}
 		$('.video_wrap').fadeIn()
 		$('.wrap').fadeOut()
 		$('#videoPlayer').html('<p>加载中，请耐心等待</p>')
@@ -114,5 +119,15 @@
 			</iframe>
 		`
 		)
+	}
+	function toast(t) {
+		// $('.toast').empty()
+		let timeer;
+		if($('.toast div').length > 0) clearTimeout(timeer)
+		$('.toast').html(`<div>${t}</div>`)
+		timeer = setTimeout(() => {
+			$('.toast').empty()
+		}, 2000)
+		
 	}
 })(jQuery, window)
