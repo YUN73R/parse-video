@@ -17,7 +17,7 @@
 			<section class="search_section">
 				<div class="title">全网VIP视频解析，视频去广告在线观看</div>
 				<div class="input">
-					<input type="text" id="parseUrl" maxlength="-1" placeholder="输入视频链接" />
+					<input type="text" onfocus="this.select()" id="parseUrl" maxlength="-1" placeholder="输入视频链接" />
 					<div class="save" id="save">确定</div>
 				</div>
 			</section>
@@ -27,7 +27,7 @@
 				<div class="parse_way">切换线路</div>
 				<div class="parse_list" id="list"></div>
 				<div class="video_player" id="videoPlayer"></div>
-				<div class="close_palyer">✖</div>
+				<div class="close_palyer" title="返回">✖</div>
 			</section>
 		</div>
 		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.0.0/jquery.min.js"></script>

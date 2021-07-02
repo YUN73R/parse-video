@@ -1,7 +1,7 @@
-!(function(w){
+!(function($, w){
 
-	let parseUrl = 'https://v.youku.com/v_show/id_XNTE2NjYyMzAzNg==.html?spm=a2hbt.13141534.1_3.10&s=dbadba5a2e9a4a0394d2'
-	var play_line_json =  [
+	let parseUrl = 'https://v.youku.com/v_show/id_XNTE2NjYyMzAzNg==.html?spm=a2hbt.13141534.1_3.10&s=dbadba5a2e9a4a0394d2';
+	const play_line_json =  [
 		{"name":"纯净1","url":"https://z1.m1907.cn/?jx=","t":"m"},
 		{"name":"B站1","url":"https://vip.parwix.com:4433/player/?url=","t":"m"},
 		{"name":"BL","url":"https://vip.bljiex.com/?v="},
@@ -57,37 +57,47 @@
 		{"name":"200","url":"https://vip.66parse.club/?url="},
 		{"name":"8090","url":"https://www.8090g.cn/?url="}
 	];
-	let list = ''
+	let list = '';
 	for(let i in play_line_json) {
 		list += `<div class="item" id="parseItem" data-url="${play_line_json[i].url}">${play_line_json[i].name}</div>`
-	}
-
-	let url = play_line_json[Math.floor(Math.random() * play_line_json.length)].url
-
+	};
+	
+	let url = play_line_json[Math.floor(Math.random() * play_line_json.length)].url;
+	
+	$(document).on('click', function() {
+		$('#list').removeClass('open')
+	})
 	$('#parseUrl').on('input', e => {
 		parseUrl = e.target.value
-	})
+	});
 	$('#parseUrl').on('keydown', event => {
 		if(event.keyCode == "13") {
 			$('#save').click()
 		}
 	});
 	$('#save').on('click', e => {
-		console.log(e)
 		$('.video_wrap').fadeIn()
+		$('.wrap').fadeOut()
+		$('#videoPlayer').html('<p>加载中，请耐心等待</p>')
 		startParse(url + parseUrl)
-	})
+	});
 
-	$('#list').html(list)
+	$('#list').html(list);
 
 	$('.parse_way').on('click', function () {
+		event.stopPropagation()
 		$('#list').toggleClass('open')
-	})
+	});
 	$('#list').on('click', '#parseItem', function () {
 		startParse($(this).data('url') + parseUrl)
 		$(this).parent().removeClass('open')
-	})
-
+	});
+	
+	$('.close_palyer').on('click', () =>{
+		$('#videoPlayer').empty()
+		$('.video_wrap').fadeOut()
+		$('.wrap').fadeIn()
+	});
 	function startParse (url) {
 		$('#videoPlayer').html(
 		`
@@ -106,4 +116,4 @@
 		`
 		)
 	}
-})(window)
+})(jQuery, window)
