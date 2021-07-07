@@ -120,9 +120,10 @@
 		`
 		)
 	}
+	let timeer;
 	function toast(t) {
 		// $('.toast').empty()
-		let timeer;
+		
 		if($('.toast div').length > 0) clearTimeout(timeer)
 		$('.toast').html(`<div>${t}</div>`)
 		timeer = setTimeout(() => {
